@@ -3,10 +3,13 @@
 echo "start experiment run!"
 echo "this should take about 60 seconds"
 
-ls /data
+echo "data directory: $USER_EXPERIMENT_DATA_DIRECTORY"
+echo "artifacts directory: $USER_EXPERIMENT_ARTIFACTS_PATH"
+
+ls $USER_EXPERIMENT_DATA_DIRECTORY
 
 python $USER_EXPERIMENT_DIRECTORY/training/train.py
-cat $USER_EXPERIMENT_DIRECTORY/training/artifacts/output.txt
+cat $USER_EXPERIMENT_ARTIFACTS_PATH/output.txt
 
 sleep 60
 
