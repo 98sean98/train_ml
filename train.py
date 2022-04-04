@@ -10,7 +10,8 @@ import mlflow
 # os.environ["MLFLOW_TRACKING_PASSWORD"] = "generated token"
 
 # mlflow.set_tracking_uri('https://community.mlflow.deploif.ai')
-mlflow.set_tracking_uri('http://localhost:8080')
+# mlflow.set_tracking_uri('http://localhost:8080')
+mlflow.set_tracking_uri('https://strong-dragon-10.loca.lt')
 mlflow.set_experiment('98sean98/test')
 
 
