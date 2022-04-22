@@ -9,9 +9,10 @@ import mlflow
 # os.environ["MLFLOW_TRACKING_USERNAME"] = "98sean98/project-2/test"
 # os.environ["MLFLOW_TRACKING_PASSWORD"] = "generated token"
 # setup mlflow for this experiment
-mlflow.set_tracking_uri('https://community.mlflow.deploif.ai')
-# mlflow.set_tracking_uri('https://great-skunk-58.loca.lt')
-mlflow.set_experiment("98sean98/Deploifai/test")
+# mlflow.set_tracking_uri('https://community.mlflow.deploif.ai')
+# mlflow.set_tracking_uri('https://helpless-cow-17.loca.lt')
+# mlflow.set_experiment("98sean98/Deploifai/test")
+# mlflow.set_experiment("98sean98/project-2/test-3")
 
 torch.manual_seed(122)
 
@@ -185,7 +186,9 @@ def main(log_metric):
 
 
 if __name__ == '__main__':
-    with mlflow.start_run() as run:
-        print('mlflow run id', run.info.run_id)
+    # with mlflow.start_run() as run:
+    #     print('mlflow run id', run.info.run_id)
+    #
+    #     main(lambda k, v: mlflow.log_metric(k, v))
 
-        main(lambda k, v: mlflow.log_metric(k, v))
+    main(lambda k, v: print(k, v))
