@@ -14,8 +14,8 @@ import mlflow
 # os.environ["MLFLOW_TRACKING_USERNAME"] = "98sean98/project-2/test"
 # os.environ["MLFLOW_TRACKING_PASSWORD"] = "generated token"
 # setup mlflow for this experiment
-mlflow.set_tracking_uri('https://community.mlflow.deploif.ai')
-mlflow.set_experiment("98sean98/Deploifai/train_ml")
+# mlflow.set_tracking_uri('https://community.mlflow.deploif.ai')
+# mlflow.set_experiment("98sean98/Deploifai/test")
 
 torch.manual_seed(122)
 
@@ -24,7 +24,7 @@ def generate_features(x):
     p = torch.tensor([1, 2, 3])
     return x.unsqueeze(-1).pow(p)
 
-def main(log_metric):
+def main(log_metric, log_param):
     # Create Tensors to hold input and outputs.
     x = torch.linspace(-math.pi, math.pi, 2000)
     y = torch.sin(x)
@@ -45,6 +45,9 @@ def main(log_metric):
     learning_rate = 1e-3
     optimizer = torch.optim.RMSprop(model.parameters(), lr=learning_rate)
     epochs = 2000
+
+    log_param('learning_rate', learning_rate)
+    log_param('epochs', epochs)
 
     print('start training')
 
@@ -97,7 +100,8 @@ def main(log_metric):
 
 
 if __name__ == '__main__':
-    with mlflow.start_run() as run:
-        print('mlflow run id', run.info.run_id)
+    # with mlflow.start_run() as run:
+        # print('mlflow run id', run.info.run_id)
 
-        main(lambda k, v: mlflow.log_metric(k, v))
+        # main(lambda k, v: mlflow.log_metric(k, v), lambda k, v: mlflow.log_param(k, v))
+    main(lambda k, v: print(k,v), lambda k, v: print(k,v))
